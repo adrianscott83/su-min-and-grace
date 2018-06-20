@@ -136,40 +136,48 @@
 		}
 	};
 
-	// Set the date we're counting down to
-	var countDownDate = new Date(Date.UTC(2018, 11, 8, 1, 0, 0));
+	var $days = $('#days'),
+		$hours = $('#hours'),
+		$minutes = $('#minutes'),
+		$seconds = $('#seconds');
 
-	// Update the count down every 1 second
-	var x = setInterval(function() {
+	if ($days.length && $hours.length && $minutes.length && $seconds.length) {
 
-	// Get todays date and time
-	var now = new Date().getTime();
+		// Set the date we're counting down to
+		var countDownDate = new Date(Date.UTC(2018, 11, 8, 1, 0, 0));
 
-	// Find the distance between now an the count down date
-	var distance = countDownDate - now;
+		// Update the count down every 1 second
+		var x = setInterval(function() {
 
-	// Time calculations for days, hours, minutes and seconds
-	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		// Get todays date and time
+		var now = new Date().getTime();
 
-	// Display the result in an element with id="demo"
-	// document.getElementById("demo").innerHTML = days + "Days " + hours + "Hours "
-	// + minutes + "Minutes " + seconds + "Seconds ";
+		// Find the distance between now an the count down date
+		var distance = countDownDate - now;
 
-	// Display the result in an element with id="demo"
-	document.getElementById("days").innerHTML = days +" <small>days</small>";
-	document.getElementById("hours").innerHTML = hours + " <small>hours</small> ";
-	document.getElementById("minutes").innerHTML = minutes + " <small>minutes</small> ";
-	document.getElementById("seconds").innerHTML = seconds + " <small>seconds</small> ";
+		// Time calculations for days, hours, minutes and seconds
+		var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-	// If the count down is finished, write some text 
-	if (distance < 0) {
-	 clearInterval(x);
-	 document.getElementById("demo").innerHTML = "The Wedding Ceremony is Over";
+		// Display the result in an element with id="demo"
+		// document.getElementById("demo").innerHTML = days + "Days " + hours + "Hours "
+		// + minutes + "Minutes " + seconds + "Seconds ";
+
+		// Display the result in an element with id="demo"
+		$days.html(days + "<small>days</small>");
+		$hours.html(hours + "<small>hours</small>");
+		$minutes.html(minutes + "<small>minutes</small>");
+		$seconds.html(seconds + "<small>seconds</small>");
+
+		// If the count down is finished, write some text 
+		if (distance < 0) {
+		 clearInterval(x);
+		 document.getElementById("demo").innerHTML = "The Wedding Ceremony is Over";
+		}
+		}, 1000);
 	}
-	}, 1000);
 
 	// Document on load.
 
