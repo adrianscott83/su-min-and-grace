@@ -11,7 +11,7 @@ function init() {
     
     var mapOptions = {
         // How zoomed in you want the map to start at (always required)
-        zoom: 9,
+        zoom: 12,
 
         // The latitude and longitude to center the map (always required)
         center: myLatlng,
@@ -48,4 +48,6 @@ function init() {
     }
     
 }
-google.maps.event.addDomListener(window, 'load', init);
+if (google) {
+    google.maps.event.addDomListener(window, 'load', init);
+}
